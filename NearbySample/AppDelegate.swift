@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Enable or disable features based on authorization.
         
         //Setup Google beacon manager
-        BeaconManager.sharedInstance.setup()
+        //BeaconManager.sharedInstance.setup()
         
         //UserDefaults.standard.set(true, forKey: "NearbyBackgroundBeaconScanningEnabled")
         //GNSPermission.setGranted(true)

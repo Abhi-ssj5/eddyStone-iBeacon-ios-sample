@@ -54,6 +54,8 @@ class BeaconManager: NSObject {
         
         let messageFoundHandler:GNSMessageHandler = { [weak self] message in
             debugPrint("===========beacon found alert===========")
+            debugPrint(message?.messageNamespace ?? "No namespace")
+            debugPrint(message?.type ?? "No type")
             if let safeValue = message?.content { debugPrint(String(data: safeValue, encoding: String.Encoding.utf8) ?? "no data") }
             self?.beaconFound?(message)
         }

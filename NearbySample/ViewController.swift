@@ -20,8 +20,8 @@ class ViewController: UIViewController {
     var locationManager:CLLocationManager?
     var beaconRegion:CLBeaconRegion?
     
-    let beaconUUID:String = "420f259d-d6cb-4100-a495-b0cad3691dcb"
-    let braodCastingBeaconIdentifier:String = "com.cbl.beacon"
+    let beaconUUIDs:[String] = ["7cce965b-2ee8-493f-b665-ebd5fa0edfaa","420f259d-d6cb-4100-a495-b0cad3691dcb"] //uuid - 16 Bytes size
+    let braodCastingBeaconIdentifier:String = "com.cbl.beacon" //namespace - 10 Bytes size
     
     
     override func viewDidLoad() {
@@ -30,23 +30,23 @@ class ViewController: UIViewController {
         
         //Un-comment this code to use iBeacon code
         
-        /*locationManager = CLLocationManager()
+        locationManager = CLLocationManager()
         locationManager?.requestAlwaysAuthorization()
         
         locationManager?.delegate = self
 
-        if let uuid = UUID(uuidString: beaconUUID) {
+        if let uuid = UUID(uuidString: beaconUUIDs[0]) {
             beaconRegion = CLBeaconRegion(proximityUUID: uuid, identifier: braodCastingBeaconIdentifier)
         }
 
         if let bRegion = beaconRegion {
             locationManager?.startMonitoring(for: bRegion)
             self.locationManager?.startRangingBeacons(in: bRegion)
-        }*/
+        }
         
         
         //Google beacon implementation
-        BeaconManager.sharedInstance.beaconFound = { [weak self] message in
+        /*BeaconManager.sharedInstance.beaconFound = { [weak self] message in
             if let data = message?.content {
                 self?.lblStatus.text = "Beacon found: " + (String(data: data, encoding: String.Encoding.utf8) ?? "No data")
             }
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             if let data = message?.content {
                 self?.lblStatus.text = "Beacon lost: " + (String(data: data, encoding: String.Encoding.utf8) ?? "No data")
             }
-        }
+        }*/
         
     }
 
